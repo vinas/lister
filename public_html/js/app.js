@@ -8,10 +8,14 @@ var app = angular.module('questionMaster', ['ngRoute'])
 			.when('/home', {
 				templateUrl: 'templates/home.html'
 			})
-			/*.when('/type/:typeId', {
+			.when('/lists/:typeName/:typeId', {
 				templateUrl: 'templates/lists.html',
-				controller: 'listsController'
-			})*/
+				controller: 'ListsController'
+			})
+			.when('/list/:listId', {
+				templateUrl: 'templates/list-details.html',
+				controller: 'ListDetailsController'
+			})
 			.otherwise({
 				redirectTo: '/home'
 			})

@@ -67,8 +67,9 @@ td {
     margin: auto;
 }
 
-.navigation {
-    font-size: 11px;
+.listTypeHeader {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .pointer:hover {

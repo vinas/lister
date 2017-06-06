@@ -8,6 +8,6 @@ app.directive('header', function() {
         return {
             restrict: 'E',
             templateUrl: 'templates/menu.html',
-            controller: TypesController
+            controller: MenuController
         }
     });

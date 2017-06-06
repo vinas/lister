@@ -1,14 +1,12 @@
-app.controller('TypesController', TypesController);
+app.controller('MenuController', MenuController);
 
-function TypesController($scope, $routeParams, typesService) {
+function MenuController($scope, typesService) {
 
     $scope.listTypes = [];
 
     init();
 
     function init() {
-        console.log('aqui');
-
         typesService.getAllTypes()
             .then(updateTypeList)
 
