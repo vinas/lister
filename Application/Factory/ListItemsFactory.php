@@ -48,4 +48,13 @@ class ListItemsFactory extends \SaSeed\Database\DAO {
             return $list;
         }
     }
+
+    public function deleteListItemById($itemId)
+    {
+        try {
+            $this->db->deleteRow($this->table, ['id', '=', $itemId]);
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        }
+    }
 }

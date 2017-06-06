@@ -71,4 +71,14 @@ class ListsController
 			RestView::render($list);
 		}
 	}
+
+	public function removeItem()
+	{
+		try {
+			$params = $this->params->getParams();
+			$this->service->eraseItem($params[0] ? $params[0] : false);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
 }

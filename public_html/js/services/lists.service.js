@@ -6,6 +6,7 @@ function listsService($http) {
 
     vm.getListsByTypeId = getListsByTypeId;
     vm.getListById = getListById;
+    vm.removeFromList = removeFromList;
 
     return vm;
 
@@ -15,5 +16,9 @@ function listsService($http) {
 
     function getListById(listId) {
         return $http.get('api/Lists/getListById/'+listId);
+    }
+
+    function removeFromList(itemId) {
+        return $http.get('api/Lists/removeItem/'+itemId);
     }
 };

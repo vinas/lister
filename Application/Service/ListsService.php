@@ -70,6 +70,16 @@ class ListsService {
 		}
 	}
 
+	public function eraseItem($itemId)
+	{
+		try {
+			$itemsFactory = new ListItemsFactory();
+			$itemsFactory->deleteListItemById($itemId);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
 	private function populateListReturnInfo($listInfo, $type = false, $list = false, $items = false)
 	{
 		$listInfo->setType($type->getName());
