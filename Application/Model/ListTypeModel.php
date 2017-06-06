@@ -1,21 +1,21 @@
 <?php
 /**
-* User Model
+* List Type Model Class
 *
 * @author Vinas de Andrade <vinas.andrade@gmail.com>
-* @since 2015/10/26
-* @version 1.15.1026
+* @since 2017/06/06
+* @version 1.17.0606
 * @license SaSeed\license.txt
-*/ 
+*/
 
 namespace Application\Model;
 
-class UserModel implements \JsonSerializable
+class ListTypeModel implements \JsonSerializable
 {
 
 	private $id;
 	private $name;
-	private $email;
+	private $status;
 
 	public function setId($id = false) {
 		$this->id = $id;
@@ -31,11 +31,11 @@ class UserModel implements \JsonSerializable
 		return $this->name;
 	}
 
-	public function setEmail($email = false) {
-		$this->email = $email;
+	public function setStatus($status = false) {
+		$this->status = $status;
 	}
-	public function getEmail() {
-		return $this->email;
+	public function getStatus() {
+		return $this->status;
 	}
 
 	public function listProperties() {

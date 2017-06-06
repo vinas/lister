@@ -27,6 +27,7 @@ Final class RestView
     public static function render($data, $model = false)
     {
         try {
+            header('Content-Type: application/javascript');
             if ($model) {
                 $model->setContent($data);
                 $data = $model;
