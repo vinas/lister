@@ -8,11 +8,11 @@ function MenuController($scope, typesService) {
 
     function init() {
         typesService.getAllTypes()
-            .then(updateTypeList)
+            .then(updateTypeList);
 
         function updateTypeList(types) {
             $scope.listTypes = types.data;
         }
     }
 
-};
+}

@@ -57,4 +57,29 @@ class ListItemsFactory extends \SaSeed\Database\DAO {
             Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
         }
     }
+
+    public function deleteListItemsByListId($listId)
+    {
+        try {
+            $this->db->deleteRow($this->table, ['listId', '=', $listId]);
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        }
+    }
+
+    public function saveNew($listItem)
+    {
+        try {
+            $this->db->insertRow(
+                $this->table,
+                array(
+                    $listItem->getListId(),
+                    $listItem->getName(),
+                    true
+                )
+            );
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        }
+    }
 }

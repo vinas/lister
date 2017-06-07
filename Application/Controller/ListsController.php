@@ -10,15 +10,16 @@
 
 namespace Application\Controller;
 
+
 use SaSeed\Output\RestView;
 use SaSeed\Handlers\Exceptions;
 use SaSeed\Handlers\Requests;
+use SaSeed\Handlers\Mapper;
 
 use Application\Service\ListsService;
 
-/*use Application\Model\UserModel;
-
-*/
+use Application\Model\ListModel;
+use Application\Model\ListItemModel;
 
 class ListsController
 {
@@ -77,6 +78,36 @@ class ListsController
 		try {
 			$params = $this->params->getParams();
 			$this->service->eraseItem($params[0] ? $params[0] : false);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function removeListAndItems()
+	{
+		try {
+			$params = $this->params->getParams();
+			$this->service->eraseListAndItem($params['listId'] ? $params['listId'] : false);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function saveList()
+	{
+		try {
+			$list = Mapper::populate(new ListModel(), $this->params->getParams());
+			$this->service->saveNewList($list);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function saveListItem()
+	{
+		try {
+			$listItem = Mapper::populate(new ListItemModel(), $this->params->getParams());
+			$this->service->saveNewListItem($listItem);
 		} catch (Exception $e) {
 			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
 		}

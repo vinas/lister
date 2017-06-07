@@ -7,16 +7,12 @@ function ListDetailsController($scope, $routeParams, listsService) {
     $scope.list = [];
 
     $scope.removeItem = removeItem;
+    $scope.addListItem = addListItem;
 
     init();
 
     function init() {
-        listsService.getListById(listId)
-            .then(updateList)
-
-        function updateList(list) {
-            $scope.list = list.data;
-        }
+        getListItemsByListId();
     }
 
     function removeItem(itemId) {
@@ -32,4 +28,18 @@ function ListDetailsController($scope, $routeParams, listsService) {
             }
         }
     }
-};
+
+    function addListItem() {
+        if ($scope.newListItem) listsService.addNewListItem(listId, $scope.newListItem).then(getListItemsByListId);
+    }
+
+    function getListItemsByListId() {
+        listsService.getListById(listId)
+            .then(updateList);
+
+        function updateList(list) {
+            $scope.newListItem = '';
+            $scope.list = list.data;
+        }
+    }
+}

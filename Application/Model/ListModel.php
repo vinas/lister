@@ -17,7 +17,6 @@ class ListModel implements \JsonSerializable
     private $id;
     private $typeId;
     private $name;
-    private $datetime;
     private $status;
 
     public function setId($id = false) {
@@ -39,13 +38,6 @@ class ListModel implements \JsonSerializable
     }
     public function getName() {
         return $this->name;
-    }
-
-    public function setDatetime($datetime = false) {
-        $this->datetime = $datetime;
-    }
-    public function getDatetime() {
-        return $this->datetime;
     }
 
     public function setStatus($status = false) {

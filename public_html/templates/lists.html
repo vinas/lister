@@ -1,8 +1,13 @@
 <div class="forceCenter">
     <label class="listTypeHeader">{{::typeName}}</label>
+    <br/>
+    <div><input type="text" ng-model="newList" /><button ng-click="addList()">add</div>
+    <br/>
+    <div style="float: left; font-size: 14px; font-weight: bold;">Listas:</div>
     <table border="1" cellpadding="0" cellspacing="0" class="results" width="100%">
         <tr ng-repeat="list in lists">
-            <td ng-click="openList(list.id)" class="pointer listItem" width="45%">{{::list.name}}</td>
+            <td ng-click="openList(list.id)" class="pointer listItem" width="90%">{{::list.name}}</td>
+            <td><button class="delList" ng-click="eraseList(list)">X</button>
         </tr>
     </table>
 </div>

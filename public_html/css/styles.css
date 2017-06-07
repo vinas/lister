@@ -10,13 +10,11 @@ textarea {
 }
 
 td {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    font-size: 0.75rem;
+    padding: 8px;
 }
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .container {
@@ -74,4 +72,11 @@ td {
 
 .pointer:hover {
     cursor: pointer;
+}
+
+.delList {
+    background-color: #C13;
+    color: #FFF;
+    font-weight: bold;
+    border: 0px;
 }

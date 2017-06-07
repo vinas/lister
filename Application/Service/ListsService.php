@@ -10,7 +10,6 @@
 
 namespace Application\Service;
 
-use SaSeed\Handlers\Mapper;
 use SaSeed\Handlers\Exceptions;
 
 use Application\Factory\ListsFactory;
@@ -31,7 +30,7 @@ class ListsService {
 		$listTypes = [];
 		try {
 			$factory = new ListTypesFactory();
-			$listTypes = $factory->listAllOrderByName();
+			$listTypes = $factory->listAllOrderById();
 		} catch (Exception $e) {
 			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
 		} finally {
@@ -75,6 +74,38 @@ class ListsService {
 		try {
 			$itemsFactory = new ListItemsFactory();
 			$itemsFactory->deleteListItemById($itemId);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function eraseListAndItem($listId)
+	{
+		try {
+			$itemsFactory = new ListItemsFactory();
+			$listsFactory = new ListsFactory();
+			$itemsFactory->deleteListItemsByListId($listId);
+			$listsFactory->deleteListById($listId);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function saveNewList($list)
+	{
+		try {
+			$listsFactory = new ListsFactory();
+			$listsFactory->saveNew($list);
+		} catch (Exception $e) {
+			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+		}
+	}
+
+	public function saveNewListItem($listItem)
+	{
+		try {
+			$itemsFactory = new ListItemsFactory();
+			$itemsFactory->saveNew($listItem);
 		} catch (Exception $e) {
 			Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
 		}

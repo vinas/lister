@@ -47,6 +47,26 @@ class ListTypesFactory extends \SaSeed\Database\DAO {
         }
     }
 
+    public function listAllOrderById()
+    {
+        $listTypes = [];
+        try {
+            $this->queryBuilder->from($this->table);
+            $this->queryBuilder->orderBy('id');
+            $listTypes = $this->db->getRows($this->queryBuilder->getQuery());
+            for ($i = 0; $i < count($listTypes); $i++) {
+                $listTypes[$i] = Mapper::populate(
+                        new ListTypeModel(),
+                        $listTypes[$i]
+                    );
+            }
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        } finally {
+            return $listTypes;
+        }
+    }
+
     public function getById($typeId = false)
     {
         $listType = new ListTypeModel();

@@ -69,4 +69,29 @@ class ListsFactory extends \SaSeed\Database\DAO {
             return $list;
         }
     }
+
+    public function saveNew($list)
+    {
+        try {
+            $this->db->insertRow(
+                $this->table,
+                array(
+                    $list->getTypeId(),
+                    $list->getName(),
+                    true
+                )
+            );
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        }
+    }
+
+    public function deleteListById($listId)
+    {
+        try {
+            $this->db->deleteRow($this->table, ['id', '=', $listId]);
+        } catch (Exception $e) {
+            Exceptions::throwing(__CLASS__, __FUNCTION__, $e);
+        }
+    }
 }
