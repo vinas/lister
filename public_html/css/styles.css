@@ -80,3 +80,7 @@ td {
     font-weight: bold;
     border: 0px;
 }
+
+.filtering {
+    font-style: italic;
+}

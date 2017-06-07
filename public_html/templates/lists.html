@@ -2,6 +2,7 @@
     <label class="listTypeHeader">{{::typeName}}</label>
     <br/>
     <div><input type="text" ng-model="newList" /><button ng-click="addList()">add</div>
+    <div ng-show="newList" class="filtering">filtrando<img src="img/loader.gif" /></div>
     <br/>
     <div style="float: left; font-size: 14px; font-weight: bold;">Listas:</div>
     <table border="1" cellpadding="0" cellspacing="0" class="results" width="100%">

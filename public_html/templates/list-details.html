@@ -2,6 +2,7 @@
     <label class="listTypeHeader">{{::list.type}}: {{::list.name}}</label>
     <br/>
     <div><input type="text" ng-model="newListItem" /><button ng-click="addListItem()">add</div>
+    <div ng-show="newListItem" class="filtering">filtrando<img src="img/loader.gif" /></div>
     <br/>
     <table border="1" cellpadding="0" cellspacing="0" class="results" width="100%">
         <tr ng-repeat="item in list.items | filter: newListItem">
